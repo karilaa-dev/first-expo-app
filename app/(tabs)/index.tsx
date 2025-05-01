@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Platform, View, TextInput, Button, FlatList, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
-import { router } from 'expo-router';
+import { Link, router } from 'expo-router'; // Import Link
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -9,18 +9,9 @@ import { ThemedView } from '@/components/ThemedView';
 import { useTasks } from '@/context/TaskContext'; // Import useTasks hook
 
 export default function HomeScreen() {
-  const { tasks, addTask } = useTasks(); // Use the context hook
-  const [newTask, setNewTask] = useState('');
-
-  const handleAddTask = () => {
-    if (newTask.trim()) {
-      addTask(newTask.trim()); // Use addTask from context
-      setNewTask('');
-    }
-  };
+  const { tasks } = useTasks(); // Only need tasks here now
 
   const navigateToDetail = (task: string) => {
-    // Use the string literal directly for the pathname
     router.push({ pathname: '/detail', params: { task } });
   };
 
@@ -38,15 +29,10 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Add a new task:</ThemedText>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter task"
-          value={newTask}
-          onChangeText={setNewTask}
-          placeholderTextColor="#888"
-        />
-        <Button title="Add Task" onPress={handleAddTask} />
+        {/* Add a button/link to navigate to the add task screen */}
+        <Link href="/add-task" asChild>
+          <Button title="Add New Task" />
+        </Link>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
          <ThemedText type="subtitle">Tasks:</ThemedText>
@@ -81,15 +67,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-    color: Platform.OS === 'ios' ? '#000' : '#000',
-    backgroundColor: '#fff',
   },
   taskItem: {
     paddingVertical: 10,

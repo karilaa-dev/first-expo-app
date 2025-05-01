@@ -33,6 +33,7 @@ export default function RootLayout() {
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="detail" options={{ title: 'Task Detail' }} /> {/* Add detail screen to stack */}
+          <Stack.Screen name="add-task" options={{ title: 'Add New Task' }} /> {/* Add add-task screen */}
           <Stack.Screen name="+not-found" />
         </Stack>
       </ThemeProvider>
