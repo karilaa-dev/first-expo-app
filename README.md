@@ -52,7 +52,7 @@ This project uses Supabase for its backend database.
 **1. Provider Setup (`app/_layout.tsx`):**
    - The main app layout (`app/_layout.tsx`) wraps the application with `QueryClientProvider`.
 
-**2. Fetching Data (`hooks/useSupabaseTasks.ts`):
+**2. Fetching Data (`hooks/useSupabaseTasks.ts`):**
    - The custom hook `hooks/useSupabaseTasks.ts` defines the logic for fetching the `tasks` table data using `useQuery`.
 
 **3. Usage in Components:**
