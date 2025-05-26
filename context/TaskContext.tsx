@@ -15,7 +15,11 @@ interface TaskProviderProps {
 }
 
 export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
-  const [tasks, setTasks] = useState<string[]>(['Learn React Native', 'Build an app', 'Explore Expo']);
+  const [tasks, setTasks] = useState<string[]>([
+    'Learn React Native',
+    'Build an app',
+    'Explore Expo',
+  ]);
 
   const addTask = (task: string) => {
     if (task.trim()) {

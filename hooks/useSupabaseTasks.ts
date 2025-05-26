@@ -27,4 +27,4 @@ export const useSupabaseTasks = () => {
     queryKey: ['tasks'], // Unique key for this query
     queryFn: fetchTasks,
   });
-}; 
+};

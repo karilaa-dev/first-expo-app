@@ -32,32 +32,40 @@ You can start developing by editing the files inside the **app** directory. This
 This project uses Supabase for its backend database.
 
 **1. Client Setup (`lib/supabase.ts`):**
-   - Initialize the Supabase client in `lib/supabase.ts`.
-   - **Action Required:** You must add your Supabase project URL and public anon key to this file.
 
-   ```typescript
-   // lib/supabase.ts (Example)
-   import { createClient } from '@supabase/supabase-js';
-   export const supabase = createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_ANON_KEY');
-   ```
+- Initialize the Supabase client in `lib/supabase.ts`.
+- **Action Required:** You must add your Supabase project URL and public anon key to this file.
+
+```typescript
+// lib/supabase.ts (Example)
+import { createClient } from '@supabase/supabase-js';
+export const supabase = createClient(
+  'YOUR_SUPABASE_URL',
+  'YOUR_SUPABASE_ANON_KEY'
+);
+```
 
 **2. Table Setup (`tasks`):**
-   - A Supabase table named `tasks` is used.
-   - Required columns: `id` (int8, PK), `name` (text), `created_at` (timestamp, default now()).
+
+- A Supabase table named `tasks` is used.
+- Required columns: `id` (int8, PK), `name` (text), `created_at` (timestamp, default now()).
 
 ### React-Query for Data Fetching
 
 `@tanstack/react-query` is used for fetching and managing data from Supabase.
 
 **1. Provider Setup (`app/_layout.tsx`):**
-   - The main app layout (`app/_layout.tsx`) wraps the application with `QueryClientProvider`.
+
+- The main app layout (`app/_layout.tsx`) wraps the application with `QueryClientProvider`.
 
 **2. Fetching Data (`hooks/useSupabaseTasks.ts`):**
-   - The custom hook `hooks/useSupabaseTasks.ts` defines the logic for fetching the `tasks` table data using `useQuery`.
+
+- The custom hook `hooks/useSupabaseTasks.ts` defines the logic for fetching the `tasks` table data using `useQuery`.
 
 **3. Usage in Components:**
-   - Screens like `app/(tabs)/index.tsx` (HomeScreen) use `useSupabaseTasks` to display tasks and handle loading/error states.
-   - New tasks added via `app/add-task.tsx` trigger a data refetch by invalidating the `['tasks']` query key, ensuring the list stays up-to-date.
+
+- Screens like `app/(tabs)/index.tsx` (HomeScreen) use `useSupabaseTasks` to display tasks and handle loading/error states.
+- New tasks added via `app/add-task.tsx` trigger a data refetch by invalidating the `['tasks']` query key, ensuring the list stays up-to-date.
 
 ## Get a fresh project
 

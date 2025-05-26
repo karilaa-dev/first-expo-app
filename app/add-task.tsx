@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { StyleSheet, TextInput, Button, Alert } from 'react-native';
 import { router } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -42,13 +42,21 @@ export default function AddTaskScreen() {
     <ThemedView style={styles.container}>
       <ThemedText type="title">Add New Task</ThemedText>
       <TextInput
-        style={[styles.input, { color: Colors[colorScheme].text, borderColor: Colors[colorScheme].icon }]}
+        style={[
+          styles.input,
+          {
+            color: Colors[colorScheme].text,
+            borderColor: Colors[colorScheme].icon,
+          },
+        ]}
         placeholder="Enter task name or description"
         value={taskName}
         onChangeText={setTaskName}
         placeholderTextColor={Colors[colorScheme].icon}
       />
-      {submitError ? <ThemedText style={styles.errorText}>{submitError}</ThemedText> : null}
+      {submitError ? (
+        <ThemedText style={styles.errorText}>{submitError}</ThemedText>
+      ) : null}
       <Button title="Save Task" onPress={handleAddTask} />
     </ThemedView>
   );
